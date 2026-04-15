@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bansal Garment — Premium Quality. Timeless Style.</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --emerald: #064E3B;
+      --emerald-dark: #053d31;
+      --gold: #D4AF37;
+      --white: #F9FAFB;
+      --muted: #e6efe9;
+      --radius: 12px;
+      --transition: 300ms cubic-bezier(.2,.9,.2,1);
+      color-scheme: light;
+      --max-width: 1100px;
+    }
+
+    /* Global (mobile-first) */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background: linear-gradient(180deg,var(--white),#f6fbf8);
+      color:var(--emerald-dark);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      -webkit-text-size-adjust:100%;
+      padding-bottom:48px;
+    }
+
+    .container{max-width:var(--max-width);margin:0 auto;padding:0 18px;}
+
+    /* Top nav */
+    header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,0.6);backdrop-filter:blur(6px);box-shadow:0 1px 0 rgba(6,78,59,0.04)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .brand{display:flex;gap:12px;align-items:center}
+    .brand .logo{
+      width:44px;height:44px;border-radius:10px;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;
+      background:var(--muted);border:1px solid rgba(6,78,59,0.06)
+    }
+    .brand h1{font-family:"Playfair Display",serif;margin:0;font-size:18px;color:var(--emerald);letter-spacing:0.6px}
+    nav .menu{display:flex;gap:12px;align-items:center}
+    .menu a{color:var(--emerald-dark);text-decoration:none;padding:8px 10px;border-radius:8px;font-weight:600;font-size:14px}
+    .menu a.cta{background:var(--emerald);color:var(--white);box-shadow:0 6px 18px rgba(6,78,59,0.12)}
+    .hamburger{display:block;border:0;background:transparent;padding:8px;border-radius:8px}
+
+    /* Hero */
+    .hero{
+      min-height:70vh;
+      padding:36px 0;
+      display:flex;
+      align-items:center;
+      gap:18px;
+      position:relative;
+      overflow:hidden;
+      border-bottom-left-radius:28px;
+      border-bottom-right-radius:28px;
+      margin-bottom:18px;
+      background:
+        radial-gradient(1200px 400px at 10% 10%, rgba(6,78,59,0.07), transparent 12%),
+        linear-gradient(160deg, rgba(6,78,59,0.06), rgba(6,78,59,0.02));
+      background-color:linear-gradient(var(--emerald));
+    }
+    .hero .left{flex:1}
+    .hero h2{font-family:"Playfair Display",serif;font-size:28px;margin:0;color:var(--emerald);letter-spacing:0.3px}
+    .hero p.tag{margin:12px 0 18px;color:var(--emerald-dark);font-size:15px}
+    .hero .buttons{display:flex;gap:10px;flex-wrap:wrap}
+    .btn{
+      display:inline-flex;align-items:center;gap:8px;border:0;padding:10px 14px;border-radius:10px;font-weight:600;font-size:14px;cursor:pointer;
+      transition:transform var(--transition),box-shadow var(--transition),background var(--transition);
+    }
+    .btn.primary{background:var(--emerald);color:var(--white);box-shadow:0 8px 30px rgba(6,78,59,0.14)}
+    .btn.ghost{background:transparent;color:var(--emerald);border:1px solid rgba(6,78,59,0.08)}
+    .hero .mock{display:none}
+
+    /* About */
+    .about{padding:18px 0}
+    .card{
+      background:linear-gradient(180deg,#ffffff, #fbfffc);
+      border-radius:14px;padding:18px;margin:12px 0;box-shadow:0 8px 30px rgba(6,78,59,0.06);
+    }
+    .about p{margin:0;color:#274937}
+
+    /* Products */
+    .grid{display:grid;grid-template-columns:1fr;gap:12px;margin:12px 0}
+    .product{
+      border-radius:12px;overflow:hidden;background:white;border:1px solid rgba(6,78,59,0.04);
+      display:flex;flex-direction:column;gap:8px;transition:transform var(--transition),box-shadow var(--transition);
+    }
+    .product:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(6,78,59,0.08)}
+    .product .thumb{background:#f6faf8;height:220px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+    .product img{width:100%;height:100%;object-fit:cover;transition:transform 400ms ease}
+    .product:hover img{transform:scale(1.08)}
+    .product .meta{padding:12px 14px;display:flex;flex-direction:column;gap:6px}
+    .product .meta h3{margin:0;font-family:"Playfair Display",serif;font-size:16px;color:var(--emerald-dark)}
+    .product .meta p{margin:0;font-size:13px;color:#526b5e}
+
+    .category-row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+    .chip{padding:8px 12px;border-radius:999px;background:rgba(6,78,59,0.06);color:var(--emerald-dark);font-weight:600;font-size:13px}
+
+    /* Features */
+    .features{display:grid;grid-template-columns:1fr;gap:12px;margin:16px 0}
+    .feature{display:flex;gap:12px;align-items:flex-start;background:linear-gradient(180deg,#fff,#fbfffb);border-radius:12px;padding:14px;border:1px solid rgba(6,78,59,0.04)}
+    .feature .icon{width:56px;height:56px;border-radius:10px;background:linear-gradient(180deg,var(--emerald),var(--emerald-dark));display:flex;align-items:center;justify-content:center;color:var(--white);font-weight:700;font-family:"Playfair Display",serif}
+
+    /* Craftsmanship */
+    .craft{padding:12px 0}
+    .craft h3{font-family:"Playfair Display",serif;margin:0 0 8px;font-size:20px;color:var(--emerald)}
+    .craft p{margin:0;color:#304a3f}
+
+    /* Contact */
+    .contact{margin-top:14px;padding:14px;border-radius:12px;background:linear-gradient(180deg,#fbfff9,#ffffff);border:1px solid rgba(6,78,59,0.06);display:flex;flex-direction:column;gap:10px}
+    .contact .row{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+    .contact .info{font-size:14px;color:#213a2f}
+    .contact .call{display:inline-flex;gap:8px;align-items:center;padding:10px 12px;border-radius:10px;background:var(--gold);color:var(--emerald-dark);font-weight:700;text-decoration:none}
+
+    /* Footer */
+    footer{margin-top:28px;padding:22px 0 40px;border-top:1px solid rgba(6,78,59,0.04);color:#3a5b4d}
+    .footer-line{font-weight:600;color:var(--emerald-dark);margin-bottom:6px}
+    .credit{font-size:13px;color:#445a4f;opacity:0.9}
+
+    /* Desktop */
+    @media(min-width:760px){
+      .hero{min-height:75vh;padding:48px 0}
+      .hero{display:grid;grid-template-columns:1fr 420px;align-items:center}
+      .hero h2{font-size:44px}
+      .hero p.tag{font-size:18px}
+      .product{grid-auto-rows:1fr}
+      .grid{grid-template-columns:repeat(3,1fr)}
+      .features{grid-template-columns:repeat(2,1fr)}
+      .hero .mock{display:block;height:380px;border-radius:16px;overflow:hidden;background:linear-gradient(180deg,#f3f8f4,#e9f6ee);box-shadow:0 20px 60px rgba(6,78,59,0.06);display:flex;align-items:center;justify-content:center}
+      .product .thumb{height:260px}
+      nav .menu{display:flex}
+      .hamburger{display:none}
+    }
+
+    /* Animations */
+    .fade-in{opacity:0;transform:translateY(10px);animation:fadeIn .9s forwards}
+    @keyframes fadeIn{to{opacity:1;transform:none}}
+    .stagger > *{opacity:0;transform:translateY(10px);animation:stagger .6s forwards}
+    .stagger > *:nth-child(1){animation-delay:0.08s}
+    .stagger > *:nth-child(2){animation-delay:0.16s}
+    .stagger > *:nth-child(3){animation-delay:0.24s}
+    .stagger > *:nth-child(4){animation-delay:0.32s}
+    @keyframes stagger{to{opacity:1;transform:none}}
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <!-- Replace src with your logo file -->
+          <img src="logo.png" alt="" style="width:100%;height:100%;object-fit:cover">
+        </div>
+        <h1>Bansal Garment</h1>
+      </div>
+
+      <nav>
+        <div class="menu" role="menubar" aria-label="Main navigation">
+          <a href="#about">About</a>
+          <a href="#products">Products</a>
+          <a href="#craft">Craft</a>
+          <a class="cta" href="#contact">Contact</a>
+        </div>
+        <button class="hamburger" aria-label="Open menu" onclick="toggleMenu()">☰</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- HERO -->
+    <section class="hero" aria-label="Hero">
+      <div class="left fade-in" style="animation-delay:0.06s">
+        <h2>Bansal Garment</h2>
+        <p class="tag">Premium Quality. Timeless Style.</p>
+        <p style="max-width:46ch;color:#2f4f44">A carefully curated selection of garments crafted to elevate everyday elegance — where premium fabrics meet thoughtful tailoring.</p>
+
+        <div class="buttons" style="margin-top:18px">
+          <button class="btn primary" onclick="scrollToId('products')">Explore Collections</button>
+          <a class="btn ghost" href="#contact">Get in Touch</a>
+        </div>
+
+        <div style="margin-top:18px" class="category-row">
+          <div class="chip">Casual Wear</div>
+          <div class="chip">Formal Wear</div>
+          <div class="chip">Seasonal Collection</div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="mock fade-in" style="animation-delay:0.12s">
+          <!-- Hero image placeholder -->
+          <img src="hero-swatch.jpg" alt="" style="width:100%;height:100%;object-fit:cover">
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="about">
+      <div class="card fade-in" style="animation-delay:0.16s">
+        <h3 style="font-family:'Playfair Display',serif;margin:0;color:var(--emerald)">About</h3>
+        <p style="margin-top:10px">Bansal Garment is dedicated to delivering high-quality clothing with a perfect blend of style, comfort, and durability. We believe in consistency, elegance, and customer satisfaction.</p>
+      </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section id="products" class="products">
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <h3 style="font-family:'Playfair Display',serif;margin:6px 0;color:var(--emerald)">Collections</h3>
+        <div style="font-size:13px;color:#2b4f40">Showing curated pieces</div>
+      </div>
+
+      <div class="grid" style="margin-top:12px">
+        <!-- Example product cards (replace images & text) -->
+        <article class="product fade-in" style="animation-delay:0.18s">
+          <div class="thumb"><img src="product1.jpg" alt="Product 1"></div>
+          <div class="meta">
+            <h3>Emerald Casual Shirt</h3>
+            <p>Lightweight fabric, relaxed fit — a refined everyday staple.</p>
+          </div>
+        </article>
+
+        <article class="product fade-in" style="animation-delay:0.22s">
+          <div class="thumb"><img src="product2.jpg" alt="Product 2"></div>
+          <div class="meta">
+            <h3>Formal Tailored Coat</h3>
+            <p>Structured silhouette, premium lining for comfort and longevity.</p>
+          </div>
+        </article>
+
+        <article class="product fade-in" style="animation-delay:0.26s">
+          <div class="thumb"><img src="product3.jpg" alt="Product 3"></div>
+          <div class="meta">
+            <h3>Seasonal Handloom Kurta</h3>
+            <p>Traditional weave elevated with modern finishes.</p>
+          </div>
+        </article>
+
+        <!-- add more cards as needed -->
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features" style="margin-top:18px">
+      <div class="feature fade-in" style="animation-delay:0.28s">
+        <div class="icon">Q</div>
+        <div>
+          <strong>Premium Fabric Quality</strong>
+          <div style="font-size:13px;color:#335445">Only carefully sourced fabrics chosen for feel and durability.</div>
+        </div>
+      </div>
+
+      <div class="feature fade-in" style="animation-delay:0.32s">
+        <div class="icon">L</div>
+        <div>
+          <strong>Long-lasting Material</strong>
+          <div style="font-size:13px;color:#335445">Garments designed to maintain shape and color over time.</div>
+        </div>
+      </div>
+
+      <div class="feature fade-in" style="animation-delay:0.36s">
+        <div class="icon">D</div>
+        <div>
+          <strong>Trendy & Comfortable Designs</strong>
+          <div style="font-size:13px;color:#335445">Modern silhouettes that prioritize comfort without sacrificing style.</div>
+        </div>
+      </div>
+
+      <div class="feature fade-in" style="animation-delay:0.40s">
+        <div class="icon">S</div>
+        <div>
+          <strong>Customer Satisfaction Focus</strong>
+          <div style="font-size:13px;color:#335445">Personalized service and a reliable returns policy.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CRAFTSMANSHIP -->
+    <section id="craft" class="craft">
+      <div class="card fade-in" style="animation-delay:0.44s">
+        <h3>Crafted by Experience</h3>
+        <p style="margin-top:10px">Our garments are created by experienced and skilled professionals who understand quality at its core. Every piece reflects dedication, precision, and years of expertise.</p>
+        <p style="margin-top:8px">We don’t just make clothes — we create trust, comfort, and long-lasting impressions through our work.</p>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" style="margin-top:18px">
+      <div class="contact fade-in" style="animation-delay:0.48s">
+        <div class="row">
+          <div>
+            <div style="font-weight:700;color:var(--emerald)">Contact</div>
+            <div class="info" style="margin-top:6px">
+              <div><strong>Contact Person:</strong> Kapil Bansal</div>
+              <div><strong>Phone:</strong> <a href="tel:+919992244453" style="color:var(--emerald-dark);text-decoration:none">+91 99922 44453</a></div>
+              <div style="margin-top:6px"><strong>Address:</strong><br>Ramswaroop Pakora Wali Gali,<br>Thana Road, Fatehabad</div>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:10px;align-items:flex-end">
+            <a class="call" href="tel:+919992244453" aria-label="Call Kapil Bansal">Call Now</a>
+            <a href="mailto:info@bansalgarment.example" style="font-size:13px;color:var(--emerald-dark);text-decoration:none">Email Us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container">
+        <div class="footer-line">Crafting quality garments with trust and style.</div>
+        <div class="credit">Designed &amp; Developed by Mohit M</div>
+      </div>
+    </footer>
+
+  </main>
+
+  <script>
+    // Simple interactions: smooth scroll + mobile menu
+    function scrollToId(id){
+      const el = document.getElementById(id);
+      if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+
+    function toggleMenu(){
+      const menu = document.querySelector('.menu');
+      if(!menu) return;
+      if(getComputedStyle(menu).display === 'none'){
+        menu.style.display = 'flex';
+      } else {
+        menu.style.display = (menu.style.display === 'flex') ? 'none' : 'flex';
+      }
+    }
+
+    // Entrance animations for elements with .fade-in and .stagger
+    document.addEventListener('DOMContentLoaded',()=>{
+      document.querySelectorAll('.fade-in').forEach((el,i)=>{
+        el.style.animationDelay = (i * 80) + 120 + 'ms';
+        el.classList.add('fade-in');
+      });
+      // Simple lazy reveal on scroll
+      const obs = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting) e.target.style.opacity=1, e.target.style.transform='none';
+        });
+      },{
+        threshold:0.08
+      });
+      document.querySelectorAll('.product, .feature, .card, .contact').forEach(n=>{
+        n.style.opacity = 0; n.style.transform = 'translateY(8px)';
+        obs.observe(n);
+      });
+    });
+  </script>
+</body>
+</html>
+
